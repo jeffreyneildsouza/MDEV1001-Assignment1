@@ -27,16 +27,16 @@ db.serialize(function(){
 
     // 2 - Print the room number and building name for those rooms whose capacity is greater than 50.
 
-    db.all("SELECT Building, Room_number FROM Classroom WHERE Capacity > 50", function(err,row){
-        console.log("\n Rooms whose capacity is greater than 50 : \n");
+    db.all("SELECT Room_number, Building FROM Classroom WHERE Capacity > 50", function(err,row){
+        console.log("\n\n Rooms whose capacity is greater than 50 ; ");
         console.log(row);
     });
 
- 
+  
 
     //3 - Print the names of those departments whose budgets are greater than $85,000.
     db.all("SELECT Dept_name FROM Department WHERE Budget > 85000", function(err,row){
-        console.log("\n Departments whose budgets are greater than $85,000 : \n");
+        console.log("\n\n Departments whose budgets are greater than $85,000 : ");
         console.log(row);
     }); 
 
@@ -44,11 +44,11 @@ db.serialize(function(){
     //4 - For each department, print the total capacity available.
     db.all("SELECT d.Dept_name, SUM(c.Capacity) as 'Total Capacity' FROM Classroom AS c, Department AS d WHERE d.Building = c.Building GROUP BY d.Dept_name", function(err,row){
         
-        console.log("\n Total capacity available for each department : \n");
+        console.log("\n\n Total capacity available for each department : ");
         console.log(row);
     });
-  /*     
-  
 
+
+/*    
 */ 
 });
